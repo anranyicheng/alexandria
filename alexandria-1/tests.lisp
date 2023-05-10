@@ -1,14 +1,10 @@
 (in-package :cl-user)
 
 (defpackage :alexandria/tests
-  (:use :cl :alexandria #+sbcl :sb-rt #-sbcl :rtest)
-  (:import-from #+sbcl :sb-rt #-sbcl :rtest
-                #:*compile-tests* #:*expected-failures*))
+  (:use :cl :alexandria-2 :cl-user))
 
 (in-package :alexandria/tests)
 
-(defun run-tests (&key ((:compiled *compile-tests*)))
-  (do-tests))
 
 (defun hash-table-test-name (name)
   ;; Workaround for Clisp calling EQL in a hash-table FASTHASH-EQL.

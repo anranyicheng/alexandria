@@ -1,9 +1,7 @@
 (in-package :cl-user)
 
 (defpackage :alexandria-2/tests
-  (:use :cl :alexandria-2 #+sbcl :sb-rt #-sbcl :rtest)
-  (:import-from #+sbcl :sb-rt #-sbcl :rtest
-                #:*compile-tests* #:*expected-failures*))
+  (:use :cl :alexandria-2 :cl-user))
 
 (in-package :alexandria-2/tests)
 
