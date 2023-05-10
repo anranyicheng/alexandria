@@ -1630,12 +1630,9 @@
       (multiple-value-bind (res err)
           (ignore-errors
             (eval
-             '(let ((syms
-                     (with-unique-names ((foo "_foo_") (bar -bar-) (quux 42))
+             '(with-unique-names ((foo "_foo_") (bar -bar-) (quux 42))
                        (list foo bar quux))))
-               (list (find-if #'symbol-package syms)
-                (equal '("_foo_0" "-BAR-1" "q2")
-                 (mapcar #'symbol-name syms))))))
+        (declare (ignore res))
         (errorp err)))
   t)
 
