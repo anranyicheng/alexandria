@@ -543,7 +543,7 @@
       (let ((fun (funcall (compile nil `(lambda () ,curried-form)))))
         (funcall fun 2)))
   4)
-(eval-when (:compile-toplevel :load-toplevel :execute)
+#+cmucl (eval-when (:compile-toplevel :load-toplevel :execute)
   (pushnew 'curry.3 *expected-failures*))
 
 (deftest curry.4
