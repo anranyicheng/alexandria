@@ -55,7 +55,7 @@ copy is returned by default."
     (maphash-keys (lambda (k)
                     (push k keys))
                   table)
-    keys))
+   (nreverse keys)))
 
 (defun hash-table-values (table)
   "Returns a list containing the values of hash table TABLE."
@@ -63,7 +63,7 @@ copy is returned by default."
     (maphash-values (lambda (v)
                       (push v values))
                     table)
-    values))
+    (nreverse values)))
 
 (defun hash-table-alist (table)
   "Returns an association list containing the keys and values of hash table
@@ -72,16 +72,17 @@ TABLE."
     (maphash (lambda (k v)
                (push (cons k v) alist))
              table)
-    alist))
+    (nreverse alist)))
 
 (defun hash-table-plist (table)
   "Returns a property list containing the keys and values of hash table
 TABLE."
   (let ((plist nil))
     (maphash (lambda (k v)
-               (setf plist (list* k v plist)))
+               (push k plist)
+	       (push v plist))
              table)
-    plist))
+    (nreverse plist)))
 
 (defun alist-hash-table (alist &rest hash-table-initargs)
   "Returns a hash table containing the keys and values of the association list
