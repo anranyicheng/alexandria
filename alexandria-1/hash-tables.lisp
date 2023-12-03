@@ -79,9 +79,10 @@ TABLE."
 TABLE."
   (let ((plist nil))
     (maphash (lambda (k v)
-               (setf plist (list* k v plist)))
+               (push k plist)
+	       (push v plist))
              table)
-    plist))
+    (nreverse plist)))
 
 (defun alist-hash-table (alist &rest hash-table-initargs)
   "Returns a hash table containing the keys and values of the association list
